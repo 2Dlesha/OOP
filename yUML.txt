@@ -1,0 +1,14 @@
+%2F%2F Cool Class Diagram,[Weapon|+weight:int;+material:string;+durability:int;+damage:int],
+[Ranged weapons|+distance:int;+ammunition:Ammunition;+rechargeTime: int;+shotsPerMinute:int;+accuracy:int|+Shoot():int;+Aim();Recharge()],
+[Melee weapon|+handleLenght:int;+range:int;+damageType:string;|+Hit():int;+Sharpen()]
+,[Throwing weapon|+mechanismType:string;],
+[Firearm|+cartridgeСapacity:int;+isAutomatic:bool;+caliber:int;+numberOfBarrels:int],
+[Automatic rifle|+bayonet:Bladed weapon;-gunsight:Gunsight;+butt:bull| SetGunsight(gunsight:Gunsight);RemoveGunsight():Gunsight;SetButt(bayonet:Bladed weapon);RemoveButt():Bladed weapon],
+[Bladed weapons|+numberOfBlades:int;+sharpness:int;+bladeLenght:int],[Bow|+bowstringType:string;+arcLength:int;],
+[Crossbow|+gunsight:Gunsight;+bowstringType:string;+triggerType:string| SetGunsight(gunsight:Gunsight);RemoveGunsight():Gunsight],
+[Gunsight|+aimType:string;+Zoom:int;],[Ammunition|+weight:int],[Arrow|+shaftLength:int;+numberOfFeathers:int;],[Bullet|caliber:+int;+penetratingAbility:int;]
+
+[Weapon]^-[Ranged weapons],[Weapon]^-[Melee weapon],[Ranged weapons]^-[Throwing weapon],
+[Ranged weapons]^-[Firearm],[Firearm]^-[Automatic rifle],[Melee weapon]^-[Bladed weapons],[Throwing weapon]^-[Bow],
+[Throwing weapon]^-[Crossbow],[Gunsight]<0..1-1<>[Automatic rifle],[Gunsight]0..1<-1<>[Crossbow],[Ammunition]^-[Bullet],
+[Ammunition]^-[Arrow],[Automatic rifle]<>1-0..1>[Bladed weapons],[Ranged weapons]<>1-0..1>[Ammunition]
